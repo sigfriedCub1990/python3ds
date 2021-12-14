@@ -1,4 +1,3 @@
-
 import unittest
 from fraction import Fraction
 
