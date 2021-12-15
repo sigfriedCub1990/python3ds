@@ -1,3 +1,10 @@
+# Stack ADT methods
+# - Stack()
+# - pop()
+# - push()
+# - peek()
+# - is_empty()
+# - size()
 class Stack:
     """
         Stack data structure using
