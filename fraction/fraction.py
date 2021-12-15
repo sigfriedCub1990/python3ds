@@ -1,3 +1,4 @@
+#!/usr/bin/python
 def gcd(m, n):
     while m % n != 0:
         m, n = n, m % n
@@ -87,3 +88,7 @@ class Fraction:
         second_num = self.den * other.num
 
         return first_num == second_num
+
+if __name__ == '__main__':
+    fraction = Fraction(40, 3600)
+    print(fraction)
