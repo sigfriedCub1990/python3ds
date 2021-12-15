@@ -25,7 +25,6 @@ def to_postfix_notation(expression):
         ")": -1
     }
     operators = {"+", "-", "*", "/"}
-    parentheses = "()"
     output = []
     op_stack = Stack()
 
