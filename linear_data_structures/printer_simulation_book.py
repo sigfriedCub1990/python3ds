@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from random import randrange
 from queue import Queue
+from fraction import Fraction
 
 class Printer:
     def __init__(self, ppm):
@@ -10,7 +11,7 @@ class Printer:
 
     def tick(self):
         if self.current_task is not None:
-            self.time_remaining = self.time_remaining - 1
+            self.time_remaining = self.time_remaining // 2
             if self.time_remaining <= 0:
                 self.current_task = None
 
@@ -37,13 +38,19 @@ class Task:
     def wait_time(self, current_time):
         return current_time - self.timestamp
 
-def simulation(num_seconds, pages_per_minute):
+# We add a third parameter to control the numbers of students
+def simulation(num_seconds, pages_per_minute, num_students):
     printer = Printer(pages_per_minute)
     print_queue = Queue()
     waiting_times = []
 
+    fraction = Fraction(num_students * 2, 3600)
+    print(f"Task every {fraction} seconds")
+
     for current_second in range(num_seconds):
-        if randrange(1, 181) == 180:
+        # We doubled the amount of students, thus the time to add new tasks
+        # to the queue decreases
+        if randrange(1, fraction.get_den() + 1) == fraction.get_den():
             task = Task(current_second)
             print_queue.enqueue(task)
 
@@ -62,4 +69,4 @@ def simulation(num_seconds, pages_per_minute):
 
 if __name__ == '__main__':
     for i in range(10):
-        simulation(3600, 10)
+        simulation(3600, 10, 20)
