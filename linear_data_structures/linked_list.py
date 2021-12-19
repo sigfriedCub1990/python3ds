@@ -23,36 +23,49 @@ class Node:
         return str(self._data)
 
 
-
-# TODO:
-# Make append operation O(1)
 class LinkedList:
     """
     Linked List using Node CS 101
     """
     def __init__(self):
         self.head = None
+        self.tail = None
 
     """ Returns if list is empty or not """
     def is_empty(self):
         return self.head == None
 
-    """ Adds an item to the list """
-    def add(self, value):
-        node = Node(value)
-        node.next = self.head
-        self.head = node
+    """
+    Adds an item to the list
 
+    Notice that this implementation adds
+    the element to the HEAD, thus adding an
+    item to an existing list will result in the
+    following structure:
+    l = [1, 2]
+    l.add(3)
+    print(l)
+    [3, 1, 2]
+    """
+    def add(self, value):
+        if self.size() == 0:
+            node = Node(value)
+            node.next = self.head
+            self.head = node
+            self.tail = node
+        else:
+            node = Node(value)
+            node.next = self.head
+            self.head = node
 
     """ Appends an item to the list """
     def append(self, value):
         if self.head is not None:
-            current = self.head
-            while current.next != None:
-                current = current.next
-            current.next = Node(value)
+            self.tail = Node(value)
         else:
-            self.head = Node(value)
+            node = Node(value)
+            self.head = node
+            self.tail = node
 
     """ Insert an item into index """
     def insert(self, index, value):
