@@ -70,3 +70,71 @@ class TestLinkedList(unittest.TestCase):
         actual = self.list.head.data
 
         self.assertEqual(actual, expected)
+
+    def test_should_insert_item_in_position_0(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        # Arrange
+        self.list.insert(0, 4)
+
+        expected = 4
+        actual = self.list.head.data
+
+        self.assertEqual(actual, expected)
+
+    def test_should_insert_item_in_position_1(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        self.list.insert(1, 4)
+
+        expected = 4
+        actual = self.list.head.next.data
+
+        self.assertEqual(actual, expected)
+
+    def test_should_insert_item_in_position_2(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        self.list.insert(2, 4)
+
+        expected = 1
+        actual = self.list.head.next.next.next.data
+
+        self.assertEqual(actual, expected)
+
+    def test_should_pop_first_item(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        expected = 3
+        actual = self.list.pop(0)
+
+        self.assertEqual(actual, expected)
+
+
+    def test_should_pop_second_item(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        expected = 2
+        actual = self.list.pop(1)
+
+        self.assertEqual(actual, expected)
+
+    def test_should_pop_third_item(self):
+        self.list.add(1)
+        self.list.add(2)
+        self.list.add(3)
+
+        expected = 1
+        actual = self.list.pop(2)
+
+        self.assertEqual(actual, expected)
