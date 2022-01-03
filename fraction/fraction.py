@@ -4,6 +4,7 @@ def gcd(m, n):
         m, n = n, m % n
     return n
 
+
 # TODO:
 # Implement other methods like /, -, *, <, >
 class Fraction:
@@ -11,6 +12,7 @@ class Fraction:
         common = gcd(top, bottom)
         self.num = top // common
         self.den = bottom // common
+
     # Ex 1
     def get_num(self):
         return self.num
@@ -26,6 +28,7 @@ class Fraction:
         new_den = self.den * other.den
 
         return Fraction(new_num, new_den)
+
     # Ex 3
     # https://www.mathsisfun.com/algebra/fractions-algebra.html
     def __sub__(self, other):
@@ -45,6 +48,7 @@ class Fraction:
         new_den = self.den * other.num
 
         return Fraction(new_num, new_den)
+
     # Ex 4
     # https://www.mathsisfun.com/comparing-fractions.html
     def __gt__(self, other):
@@ -89,6 +93,7 @@ class Fraction:
 
         return first_num == second_num
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     fraction = Fraction(40, 3600)
     print(fraction)

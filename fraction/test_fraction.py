@@ -7,7 +7,7 @@ class FractionTests(unittest.TestCase):
         first = Fraction(1, 2)
         second = Fraction(1, 3)
 
-        expected = '5/6'
+        expected = "5/6"
         actual = str(first + second)
 
         self.assertEqual(actual, expected)
